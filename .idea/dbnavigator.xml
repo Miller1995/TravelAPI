@@ -38,9 +38,10 @@
     order_number varchar(32) 
 );
 
-DROP TABLE Travel;
 
-SELECT * FROM Travel;]]></console>
+SELECT * FROM Travel;
+
+INSERT INTO Travel(type_travel, start_date, end_date, amount, order_number) VALUES ('Sky', '2002/04/07', '2002/05/08', 330.45, 'F332223' );]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
