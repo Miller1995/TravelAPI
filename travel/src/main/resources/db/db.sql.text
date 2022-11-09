@@ -1,0 +1,8 @@
+CREATE TABLE Travel(
+    id int8 PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    type_travel varchar(32),
+    start_date TIMESTAMP, 
+    end_date TIMESTAMP,
+    amount numeric(5,2),
+    order_number varchar(32) 
+);
