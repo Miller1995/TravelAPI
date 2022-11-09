@@ -2,6 +2,8 @@ package md.miller1995.travel.models;
 
 
 import lombok.*;
+import md.miller1995.travel.dto.TravelDTO;
+import org.modelmapper.ModelMapper;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -34,4 +36,8 @@ public class Travel {
 
     @Column(name = "order_number")
     private String orderNumber;
+
+    public TravelDTO convertTravelToTravelDTO(){
+        return new ModelMapper().map(this, TravelDTO.class);
+    }
 }

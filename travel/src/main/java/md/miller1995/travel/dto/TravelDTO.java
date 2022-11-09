@@ -1,6 +1,8 @@
 package md.miller1995.travel.dto;
 
 import lombok.*;
+import md.miller1995.travel.models.Travel;
+import org.modelmapper.ModelMapper;
 
 import java.time.LocalDate;
 
@@ -15,4 +17,11 @@ public class TravelDTO {
     private LocalDate endDate;
     private Double amount;
 
+
+
+    public Travel convertTravelDTOToTravel(){
+        return new ModelMapper().map(this, Travel.class);
+    }
 }
+
+
