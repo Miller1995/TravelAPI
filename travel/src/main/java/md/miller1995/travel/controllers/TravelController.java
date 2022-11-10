@@ -1,22 +1,23 @@
 package md.miller1995.travel.controllers;
 
+
 import md.miller1995.travel.models.Travel;
 import md.miller1995.travel.services.TravelService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+
+import org.springframework.web.bind.annotation.*;
+
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/travel")
+@RequestMapping("/travels")
 public class TravelController {
 
     private final TravelService travelService;
 
     @Autowired
-    public TravelController(TravelService travelService) {
+    public TravelController(TravelService travelService){
         this.travelService = travelService;
     }
 
@@ -24,4 +25,12 @@ public class TravelController {
     public List<Travel> getAllTravels(){
         return travelService.findAllTravels();
     }
+
+    // this method find all Travels after nameField (typeTravel, amount, orderNumber, id, startDate and endDate) in ASC order
+    @GetMapping("/search/{nameField}")
+    public List<Travel> getAllTravelsWithSortBy(@PathVariable String nameField){
+        return travelService.findTravelsWithSorting(nameField);
+    }
+
+
 }

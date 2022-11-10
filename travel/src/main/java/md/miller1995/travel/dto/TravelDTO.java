@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @Setter
 @Getter
 @ToString
-public class TravelDTO {
+public class TravelDTO{
     private String typeTravel;
     private LocalDate startDate;
     private LocalDate endDate;
