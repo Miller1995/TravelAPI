@@ -8,6 +8,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -29,4 +30,12 @@ public class TravelService {
         return travelRepository.findAll(Sort.by(Sort.Direction.ASC, nameField));
     }
 
+    public List<Travel> findAllTravelsWithSortByTypeTravelAndBetweenDate(String typeTravel,
+                                                                       LocalDate startDate,
+                                                                       LocalDate endDate){
+
+        return travelRepository.findAllByTypeTravelAndStartDateGreaterThanEqualAndEndDateLessThanEqual( typeTravel,
+                                                                                                        startDate,
+                                                                                                        endDate);
+    }
 }

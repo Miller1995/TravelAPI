@@ -5,9 +5,11 @@ import md.miller1995.travel.models.Travel;
 import md.miller1995.travel.services.TravelService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -30,6 +32,17 @@ public class TravelController {
     @GetMapping("/search/{nameField}")
     public List<Travel> getAllTravelsWithSortBy(@PathVariable String nameField){
         return travelService.findTravelsWithSorting(nameField);
+    }
+
+
+    // find Travel after period and field typeTravel
+    @GetMapping("/search")
+    public List<Travel> getAllTravelsBetweenDateAndSortByTypeTravel(
+            @RequestParam(value = "typeTravel") String typeTravel,
+            @RequestParam(value = "startDate") @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate startDate,
+            @RequestParam(value = "endDate") @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate endDate){
+
+        return travelService.findAllTravelsWithSortByTypeTravelAndBetweenDate(typeTravel, startDate, endDate);
     }
 
 
