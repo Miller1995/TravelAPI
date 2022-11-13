@@ -16,4 +16,7 @@ public interface TravelRepository extends JpaRepository<Travel,Long>{
     List<Travel> findAllByTypeTravelAndStartDateGreaterThanEqualAndEndDateLessThanEqual(String typeTravel,
                                                                                         LocalDate startDate,
                                                                                         LocalDate endDate);
+
+    List<Travel> findAllByTypeTravel(String typeTravel);
 }
+

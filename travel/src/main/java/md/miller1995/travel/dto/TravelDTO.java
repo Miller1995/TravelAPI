@@ -13,6 +13,7 @@ import java.time.LocalDate;
 @ToString
 public class TravelDTO{
     private String typeTravel;
+    private String placeTravel;
     private LocalDate startDate;
     private LocalDate endDate;
     private Double amount;

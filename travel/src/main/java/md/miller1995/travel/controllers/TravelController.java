@@ -1,6 +1,7 @@
 package md.miller1995.travel.controllers;
 
 
+import md.miller1995.travel.dto.TravelDTO;
 import md.miller1995.travel.models.Travel;
 import md.miller1995.travel.services.TravelService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,13 @@ public class TravelController {
 
         return travelService.findAllTravelsWithSortByTypeTravelAndBetweenDate(typeTravel, startDate, endDate);
     }
+
+    // find Travel by type
+    @GetMapping("/search/by")
+    public List<Travel> findAllTravelsByTypeTravel(@RequestParam(value = "typeTravel") String typeTravel){
+        return travelService.findAllTravelByTypeTravel(typeTravel) ;
+    }
+
 
 
 }

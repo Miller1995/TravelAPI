@@ -33,9 +33,12 @@ public class TravelService {
     public List<Travel> findAllTravelsWithSortByTypeTravelAndBetweenDate(String typeTravel,
                                                                        LocalDate startDate,
                                                                        LocalDate endDate){
-
         return travelRepository.findAllByTypeTravelAndStartDateGreaterThanEqualAndEndDateLessThanEqual( typeTravel,
                                                                                                         startDate,
                                                                                                         endDate);
+    }
+
+    public List<Travel> findAllTravelByTypeTravel(String typeTravel){
+        return travelRepository.findAllByTypeTravel(typeTravel);
     }
 }

@@ -7,6 +7,7 @@ import org.modelmapper.ModelMapper;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "Travel")
@@ -25,6 +26,9 @@ public class Travel {
     @Column(name = "type_travel")
     private String typeTravel;
 
+    @Column(name = "place_travel")
+    private String placeTravel;
+
     @Column(name = "start_date")
     private LocalDate startDate;
 
@@ -36,6 +40,7 @@ public class Travel {
 
     @Column(name = "order_number")
     private String orderNumber;
+
 
     public TravelDTO convertTravelToTravelDTO(){
         return new ModelMapper().map(this, TravelDTO.class);
