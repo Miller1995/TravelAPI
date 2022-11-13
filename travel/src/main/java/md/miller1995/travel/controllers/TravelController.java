@@ -33,7 +33,7 @@ public class TravelController {
 
     // this method find all Travels after nameField (typeTravel, amount, orderNumber, id, startDate and endDate) in ASC order
     @GetMapping("/search/{nameField}")
-    public List<Travel> getAllTravelsWithSortBy(@PathVariable String nameField){
+    public List<Travel> getAllTravelsWithSortBy(@PathVariable("nameField") String nameField){
         return travelService.findTravelsWithSorting(nameField);
     }
 
@@ -64,14 +64,26 @@ public class TravelController {
         return ResponseEntity.ok(HttpStatus.CREATED);
     }
 
+    // delete Travel by id
     @DeleteMapping("/{id}")
-    public ResponseEntity<HttpStatus> deleteTravel(@PathVariable Long id){
+    public ResponseEntity<HttpStatus> deleteTravel(@PathVariable("id") Long id){
 
         travelService.deleteTravel(id);
 
         return ResponseEntity.ok(HttpStatus.NO_CONTENT);
     }
 
+    // Update Travel
+    @PatchMapping("/{id}")
+    public ResponseEntity<HttpStatus> updateTravel(@RequestBody TravelDTO travelDTO,
+                                                   @PathVariable("id") Long id){
+
+        Travel travel = travelDTO.convertTravelDTOToTravel();
+
+        travelService.updateTravel(id, travel);
+
+        return ResponseEntity.ok(HttpStatus.ACCEPTED);
+    }
 
 
 }

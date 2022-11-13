@@ -2,6 +2,7 @@ package md.miller1995.travel.services;
 
 import md.miller1995.travel.models.Travel;
 import md.miller1995.travel.repositories.TravelRepository;
+import org.hibernate.TransientPropertyValueException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.data.domain.Sort;
@@ -10,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional(readOnly = true)
@@ -25,6 +27,7 @@ public class TravelService {
     public List<Travel> findAllTravels(){
         return travelRepository.findAll();
     }
+
 
     public List<Travel> findTravelsWithSorting(String nameField){
         return travelRepository.findAll(Sort.by(Sort.Direction.ASC, nameField));
@@ -51,4 +54,22 @@ public class TravelService {
     public void deleteTravel(Long id){
         travelRepository.deleteById(id);
     }
+
+    @Transactional
+    public void updateTravel(Long id, Travel updateTravel){
+
+        Optional<Travel> travelResult = travelRepository.findById(id);
+
+        Travel travelToBeUpdated = travelResult.get();
+
+        travelToBeUpdated.setTypeTravel(updateTravel.getTypeTravel());
+        travelToBeUpdated.setPlaceTravel(updateTravel.getPlaceTravel());
+        travelToBeUpdated.setStartDate(updateTravel.getStartDate());
+        travelToBeUpdated.setEndDate(updateTravel.getEndDate());
+        travelToBeUpdated.setAmount(updateTravel.getAmount());
+        travelToBeUpdated.setOrderNumber(updateTravel.getOrderNumber());
+    }
+
+
+
 }
