@@ -64,6 +64,14 @@ public class TravelController {
         return ResponseEntity.ok(HttpStatus.CREATED);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<HttpStatus> deleteTravel(@PathVariable Long id){
+
+        travelService.deleteTravel(id);
+
+        return ResponseEntity.ok(HttpStatus.NO_CONTENT);
+    }
+
 
 
 }

@@ -46,4 +46,9 @@ public class TravelService {
     public void saveTravel(Travel travel){
         travelRepository.save(travel);
     }
+
+    @Transactional
+    public void deleteTravel(Long id){
+        travelRepository.deleteById(id);
+    }
 }
