@@ -17,6 +17,7 @@ public class TravelDTO{
     private LocalDate startDate;
     private LocalDate endDate;
     private Double amount;
+    private String orderNumber;
 
 
 

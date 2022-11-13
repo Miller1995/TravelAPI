@@ -7,6 +7,8 @@ import md.miller1995.travel.services.TravelService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -50,6 +52,16 @@ public class TravelController {
     @GetMapping("/search/by")
     public List<Travel> findAllTravelsByTypeTravel(@RequestParam(value = "typeTravel") String typeTravel){
         return travelService.findAllTravelByTypeTravel(typeTravel) ;
+    }
+
+    // adding new Travel in database
+    @PostMapping("/add")
+    public ResponseEntity<HttpStatus> registerTravel(@RequestBody TravelDTO travelDTO){
+
+        Travel travel = travelDTO.convertTravelDTOToTravel();
+        travelService.saveTravel(travel);
+
+        return ResponseEntity.ok(HttpStatus.CREATED);
     }
 
 

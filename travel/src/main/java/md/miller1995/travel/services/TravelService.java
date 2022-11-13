@@ -41,4 +41,9 @@ public class TravelService {
     public List<Travel> findAllTravelByTypeTravel(String typeTravel){
         return travelRepository.findAllByTypeTravel(typeTravel);
     }
+
+    @Transactional
+    public void saveTravel(Travel travel){
+        travelRepository.save(travel);
+    }
 }

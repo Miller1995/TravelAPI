@@ -50,12 +50,16 @@ INSERT INTO Travel(type_travel, place_travel, start_date, end_date, amount, orde
 INSERT INTO Travel(type_travel, place_travel, start_date, end_date, amount, order_number) VALUES ('ATV', 'Brasov', '2022/01/01', '2022/12/31', 666.45, 'F335' );
 INSERT INTO Travel(type_travel, place_travel, start_date, end_date, amount, order_number) VALUES ('ATV', 'Predeal', '2022/01/01', '2022/12/31', 777.45, 'F3333' );
 INSERT INTO Travel(type_travel, place_travel, start_date, end_date, amount, order_number) VALUES ('Hot Air Balloon', 'Bucuresti', '2022/06/02', '2022/08/31', 777.45, 'F3333' );
+INSERT INTO Travel(type_travel, place_travel, start_date, end_date, amount, order_number) VALUES ('Atv', 'Azuga', '2022/04/01', '2022/12/31', 777.45, 'F3333' );
+INSERT INTO Travel(type_travel, place_travel, start_date, end_date, amount, order_number) VALUES ('App Tpp Vpp', 'Bucuresti', '2022/01/01', '2022/12/31', 777.45, 'F3333' );
+INSERT INTO Travel(type_travel, place_travel, start_date, end_date, amount, order_number) VALUES ('Hot Air Balloon', 'Predeal', '2022/01/01', '2022/12/31', 777.45, 'F3333' );
+INSERT INTO Travel(type_travel, place_travel, start_date, end_date, amount, order_number) VALUES ('Hot Air Balloon', 'Azuga', '2022/06/02', '2022/10/21', 777.45, 'F3333' );
+INSERT INTO Travel(type_travel, place_travel, start_date, end_date, amount, order_number) VALUES ('Hot Air Balloon', 'Predeal', '2022/01/10', '2022/12/10', 777.45, 'F3333' );
+INSERT INTO Travel(type_travel, place_travel, start_date, end_date, amount, order_number) VALUES ('Hot Air Balloon', 'Predeal', '2022/01/01', '2023/01/01', 777.45, 'F3333' );
+
+
 
 SELECT * FROM Travel;
-
-
-
-
 
 
 
