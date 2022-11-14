@@ -4,6 +4,8 @@ package md.miller1995.travel.controllers;
 import md.miller1995.travel.dto.TravelDTO;
 import md.miller1995.travel.models.Travel;
 import md.miller1995.travel.services.TravelService;
+import md.miller1995.travel.util.TravelErrorResponse;
+import md.miller1995.travel.util.TravelNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -29,6 +31,11 @@ public class TravelController {
     @GetMapping()
     public List<Travel> getAllTravels(){
         return travelService.findAllTravels();
+    }
+
+    @GetMapping("/{id}")
+    public Travel getTravel(@PathVariable("id") Long id){
+        return travelService.findOneTravel(id);
     }
 
     // this method find all Travels after nameField (typeTravel, amount, orderNumber, id, startDate and endDate) in ASC order
@@ -73,7 +80,7 @@ public class TravelController {
         return ResponseEntity.ok(HttpStatus.NO_CONTENT);
     }
 
-    // Update Travel
+    // update Travel
     @PatchMapping("/{id}")
     public ResponseEntity<HttpStatus> updateTravel(@RequestBody TravelDTO travelDTO,
                                                    @PathVariable("id") Long id){
@@ -83,6 +90,16 @@ public class TravelController {
         travelService.updateTravel(id, travel);
 
         return ResponseEntity.ok(HttpStatus.ACCEPTED);
+    }
+
+    @ExceptionHandler
+    private ResponseEntity<TravelErrorResponse> handleTravelNotFoundException(TravelNotFoundException exception){
+        TravelErrorResponse response = new TravelErrorResponse(
+                                            "Travel with this id wasn't found!",
+                                            System.currentTimeMillis()
+        );
+
+        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
 
 

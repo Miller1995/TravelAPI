@@ -2,7 +2,7 @@ package md.miller1995.travel.services;
 
 import md.miller1995.travel.models.Travel;
 import md.miller1995.travel.repositories.TravelRepository;
-import org.hibernate.TransientPropertyValueException;
+import md.miller1995.travel.util.TravelNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.data.domain.Sort;
@@ -28,6 +28,9 @@ public class TravelService {
         return travelRepository.findAll();
     }
 
+    public Travel findOneTravel(Long id){
+        return travelRepository.findById(id).orElseThrow(TravelNotFoundException::new);
+    }
 
     public List<Travel> findTravelsWithSorting(String nameField){
         return travelRepository.findAll(Sort.by(Sort.Direction.ASC, nameField));
@@ -56,18 +59,18 @@ public class TravelService {
     }
 
     @Transactional
-    public void updateTravel(Long id, Travel updateTravel){
+    public void updateTravel(Long id, Travel updateTravel) {
 
         Optional<Travel> travelResult = travelRepository.findById(id);
 
-        Travel travelToBeUpdated = travelResult.get();
+            Travel travelToBeUpdated = travelResult.get();
 
-        travelToBeUpdated.setTypeTravel(updateTravel.getTypeTravel());
-        travelToBeUpdated.setPlaceTravel(updateTravel.getPlaceTravel());
-        travelToBeUpdated.setStartDate(updateTravel.getStartDate());
-        travelToBeUpdated.setEndDate(updateTravel.getEndDate());
-        travelToBeUpdated.setAmount(updateTravel.getAmount());
-        travelToBeUpdated.setOrderNumber(updateTravel.getOrderNumber());
+            travelToBeUpdated.setTypeTravel(updateTravel.getTypeTravel());
+            travelToBeUpdated.setPlaceTravel(updateTravel.getPlaceTravel());
+            travelToBeUpdated.setStartDate(updateTravel.getStartDate());
+            travelToBeUpdated.setEndDate(updateTravel.getEndDate());
+            travelToBeUpdated.setAmount(updateTravel.getAmount());
+            travelToBeUpdated.setOrderNumber(updateTravel.getOrderNumber());
     }
 
 
