@@ -36,8 +36,9 @@ public class TravelController {
     }
 
     @GetMapping("/{id}")
-    public Travel getTravel(@PathVariable("id") Long id){
-        return travelService.findOneTravel(id);
+    public TravelDTO getTravel(@PathVariable("id") Long id){
+        Travel travel = travelService.findOneTravel(id);
+        return travel.convertTravelToTravelDTO();
     }
 
     // this method find all Travels after nameField (typeTravel, amount, orderNumber, id, startDate and endDate) in ASC order
