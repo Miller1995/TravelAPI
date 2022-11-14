@@ -4,16 +4,18 @@ package md.miller1995.travel.controllers;
 import md.miller1995.travel.dto.TravelDTO;
 import md.miller1995.travel.models.Travel;
 import md.miller1995.travel.services.TravelService;
-import md.miller1995.travel.util.TravelErrorResponse;
-import md.miller1995.travel.util.TravelNotFoundException;
+import md.miller1995.travel.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 
+import javax.validation.Valid;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -63,7 +65,21 @@ public class TravelController {
 
     // adding new Travel in database
     @PostMapping("/add")
-    public ResponseEntity<HttpStatus> registerTravel(@RequestBody TravelDTO travelDTO){
+    public ResponseEntity<HttpStatus> registerTravel(@RequestBody @Valid TravelDTO travelDTO,
+                                                     BindingResult bindingResult){
+        if (bindingResult.hasErrors()){
+
+            StringBuilder errorMessage = new StringBuilder();
+            List<FieldError> errorsList =  bindingResult.getFieldErrors();
+
+            for (FieldError error: errorsList){
+                errorMessage.append(error.getField())
+                        .append(" - ")
+                        .append(error.getDefaultMessage() == null ? error.getCode() : error.getDefaultMessage())
+                        .append(";");
+            }
+            throw new TravelNotCreatedException(errorMessage.toString());
+        }
 
         Travel travel = travelDTO.convertTravelDTOToTravel();
         travelService.saveTravel(travel);
@@ -100,6 +116,16 @@ public class TravelController {
         );
 
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler
+    private ResponseEntity<TravelErrorResponse> handleTravelNotCreatedException(TravelNotCreatedException exception){
+        TravelErrorResponse response = new TravelErrorResponse(
+                                                exception.getMessage(),
+                                                System.currentTimeMillis()
+        );
+
+        return new ResponseEntity<>(response,HttpStatus.NOT_ACCEPTABLE);
     }
 
 
