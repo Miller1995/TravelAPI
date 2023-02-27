@@ -1,6 +1,5 @@
 package md.miller1995.travel.controllers;
 
-
 import md.miller1995.travel.dto.TravelDTO;
 import md.miller1995.travel.models.Travel;
 import md.miller1995.travel.services.TravelService;
@@ -48,6 +47,12 @@ public class TravelController {
     }
 
 
+    // find Travel by type
+    @GetMapping("/search/by")
+    public List<Travel> findAllTravelsByTypeTravel(@RequestParam(value = "typeTravel") String typeTravel){
+        return travelService.findAllTravelByTypeTravel(typeTravel) ;
+    }
+
     // find Travel after period and field typeTravel
     @GetMapping("/search")
     public List<Travel> getAllTravelsBetweenDateAndSortByTypeTravel(
@@ -58,11 +63,6 @@ public class TravelController {
         return travelService.findAllTravelsWithSortByTypeTravelAndBetweenDate(typeTravel, startDate, endDate);
     }
 
-    // find Travel by type
-    @GetMapping("/search/by")
-    public List<Travel> findAllTravelsByTypeTravel(@RequestParam(value = "typeTravel") String typeTravel){
-        return travelService.findAllTravelByTypeTravel(typeTravel) ;
-    }
 
     // adding new Travel in database
     @PostMapping("/add")
@@ -91,7 +91,6 @@ public class TravelController {
     // delete Travel by id
     @DeleteMapping("/{id}")
     public ResponseEntity<HttpStatus> deleteTravel(@PathVariable("id") Long id){
-
         travelService.deleteTravel(id);
 
         return ResponseEntity.ok(HttpStatus.NO_CONTENT);
@@ -103,7 +102,6 @@ public class TravelController {
                                                    @PathVariable("id") Long id){
 
         Travel travel = travelDTO.convertTravelDTOToTravel();
-
         travelService.updateTravel(id, travel);
 
         return ResponseEntity.ok(HttpStatus.ACCEPTED);
@@ -115,7 +113,6 @@ public class TravelController {
                                             "Travel with this id wasn't found!",
                                             System.currentTimeMillis()
         );
-
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
 
@@ -125,7 +122,6 @@ public class TravelController {
                                                 exception.getMessage(),
                                                 System.currentTimeMillis()
         );
-
         return new ResponseEntity<>(response,HttpStatus.NOT_ACCEPTABLE);
     }
 

@@ -8,7 +8,6 @@ CREATE TABLE Travel(
 );
 
 
-
 // Update Table Travel
 CREATE TABLE Travel(
     id int8 PRIMARY KEY GENERATED ALWAYS AS IDENTITY,

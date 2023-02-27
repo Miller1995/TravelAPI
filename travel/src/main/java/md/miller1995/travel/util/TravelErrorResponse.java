@@ -9,6 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class TravelErrorResponse {
+
     private String message;
     private Long timestamp;
 }

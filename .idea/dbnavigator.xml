@@ -33,107 +33,145 @@
     id int8 PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     type_travel varchar(32),
     place_travel varchar(32),
+    city_id int8 REFERENCES City(id),
     start_date TIMESTAMP, 
     end_date TIMESTAMP,
     amount numeric(5,2),
     order_number varchar(32) 
 );
 
-INSERT INTO Travel(type_travel, place_travel, start_date, end_date, amount, order_number) VALUES ('Sky', 'Brasov', '2022/01/01', '2022/04/01', 550.45, 'F332223' );
-INSERT INTO Travel(type_travel, place_travel, start_date, end_date, amount, order_number) VALUES ('Snowboard', 'Predeal', '2022/01/01', '2022/04/01', 530.45, 'FDER334' );
-INSERT INTO Travel(type_travel, place_travel, start_date, end_date, amount, order_number) VALUES ('Sky', 'Preadal', '2022/01/01', '2022/04/01', 350.45, 'F666666' );
-INSERT INTO Travel(type_travel, place_travel, start_date, end_date, amount, order_number) VALUES ('Bicycle', 'Predeal', '2022/05/01', '2022/09/30', 366.45, 'F88888888' );
-INSERT INTO Travel(type_travel, place_travel, start_date, end_date, amount, order_number) VALUES ('Sky', 'Sinaia', '2022/01/01', '2022/04/15', 222.45, 'F3322323' );
-INSERT INTO Travel(type_travel, place_travel, start_date, end_date, amount, order_number) VALUES ('Sky', 'Moieciul de Jos','2022/01/01', '2022/04/01', 333.45, 'F33444' );
-INSERT INTO Travel(type_travel, place_travel, start_date, end_date, amount, order_number) VALUES ('Bicycle', 'Sinaia', '2022/04/10', '2022/10/10', 444.45, 'F332255' );
-INSERT INTO Travel(type_travel, place_travel, start_date, end_date, amount, order_number) VALUES ('Snowboard', 'Brasov', '2022/12/20', '2022/04/01', 555.45, 'F33243' );
-INSERT INTO Travel(type_travel, place_travel, start_date, end_date, amount, order_number) VALUES ('ATV', 'Brasov', '2022/01/01', '2022/12/31', 666.45, 'F335' );
-INSERT INTO Travel(type_travel, place_travel, start_date, end_date, amount, order_number) VALUES ('ATV', 'Predeal', '2022/01/01', '2022/12/31', 777.45, 'F3333' );
-INSERT INTO Travel(type_travel, place_travel, start_date, end_date, amount, order_number) VALUES ('Hot Air Balloon', 'Bucuresti', '2022/06/02', '2022/08/31', 777.45, 'F3333' );
-INSERT INTO Travel(type_travel, place_travel, start_date, end_date, amount, order_number) VALUES ('Atv', 'Azuga', '2022/04/01', '2022/12/31', 777.45, 'F3333' );
-INSERT INTO Travel(type_travel, place_travel, start_date, end_date, amount, order_number) VALUES ('App Tpp Vpp', 'Bucuresti', '2022/01/01', '2022/12/31', 777.45, 'F3333' );
-INSERT INTO Travel(type_travel, place_travel, start_date, end_date, amount, order_number) VALUES ('Hot Air Balloon', 'Predeal', '2022/01/01', '2022/12/31', 777.45, 'F3333' );
-INSERT INTO Travel(type_travel, place_travel, start_date, end_date, amount, order_number) VALUES ('Hot Air Balloon', 'Azuga', '2022/06/02', '2022/10/21', 777.45, 'F3333' );
-INSERT INTO Travel(type_travel, place_travel, start_date, end_date, amount, order_number) VALUES ('Hot Air Balloon', 'Predeal', '2022/01/10', '2022/12/10', 777.45, 'F3333' );
-INSERT INTO Travel(type_travel, place_travel, start_date, end_date, amount, order_number) VALUES ('Hot Air Balloon', 'Predeal', '2022/01/01', '2023/01/01', 777.45, 'F3333' );
-
-
+INSERT INTO Travel(type_travel, place_travel, city_id, start_date, end_date, amount, order_number) VALUES ('Sky', 'Brasov', 1, '2022/01/01', '2022/04/01', 550.45, 'F332223' );
+INSERT INTO Travel(type_travel, place_travel, city_id, start_date, end_date, amount, order_number) VALUES ('Snowboard', 'Predeal', 3, '2022/01/01', '2022/04/01', 530.45, 'FDER334' );
+INSERT INTO Travel(type_travel, place_travel, city_id, start_date, end_date, amount, order_number) VALUES ('Sky', 'Preadal', 3, '2022/01/01', '2022/04/01', 350.45, 'F666666' );
+INSERT INTO Travel(type_travel, place_travel, city_id, start_date, end_date, amount, order_number) VALUES ('Bicycle', 'Predeal', 3, '2022/05/01', '2022/09/30', 366.45, 'F88888888' );
+INSERT INTO Travel(type_travel, place_travel, city_id, start_date, end_date, amount, order_number) VALUES ('Sky', 'Sinaia', 2, '2022/01/01', '2022/04/15', 222.45, 'F3322323' );
+INSERT INTO Travel(type_travel, place_travel, city_id, start_date, end_date, amount, order_number) VALUES ('Sky', 'Moieciul de Jos', 2, '2022/01/01', '2022/04/01', 333.45, 'F33444' );
+INSERT INTO Travel(type_travel, place_travel, city_id, start_date, end_date, amount, order_number) VALUES ('Bicycle', 'Sinaia', 2, '2022/04/10', '2022/10/10', 444.45, 'F332255' );
+INSERT INTO Travel(type_travel, place_travel, city_id, start_date, end_date, amount, order_number) VALUES ('Snowboard', 'Brasov', 1, '2022/12/20', '2022/04/01', 555.45, 'F33243' );
+INSERT INTO Travel(type_travel, place_travel, city_id, start_date, end_date, amount, order_number) VALUES ('ATV', 'Brasov', 1, '2022/01/01', '2022/12/31', 666.45, 'F335' );
+INSERT INTO Travel(type_travel, place_travel, city_id, start_date, end_date, amount, order_number) VALUES ('ATV', 'Predeal', 3, '2022/01/01', '2022/12/31', 777.45, 'F3333' );
+INSERT INTO Travel(type_travel, place_travel, city_id, start_date, end_date, amount, order_number) VALUES ('Hot Air Balloon', 'Bucuresti', 4,'2022/06/02', '2022/08/31', 777.45, 'F3333' );
+INSERT INTO Travel(type_travel, place_travel, city_id, start_date, end_date, amount, order_number) VALUES ('Atv', 'Azuga', 5, '2022/04/01', '2022/12/31', 777.45, 'F3333' );
+INSERT INTO Travel(type_travel, place_travel, city_id, start_date, end_date, amount, order_number) VALUES ('App Tpp Vpp', 'Bucuresti', 4, '2022/01/01', '2022/12/31', 777.45, 'F3333' );
+INSERT INTO Travel(type_travel, place_travel, city_id, start_date, end_date, amount, order_number) VALUES ('Hot Air Balloon', 'Predeal', 3,  '2022/01/01', '2022/12/31', 777.45, 'F3333' );
+INSERT INTO Travel(type_travel, place_travel, city_id, start_date, end_date, amount, order_number) VALUES ('Hot Air Balloon', 'Azuga', 5,  '2022/06/02', '2022/10/21', 777.45, 'F3333' );
+INSERT INTO Travel(type_travel, place_travel, city_id, start_date, end_date, amount, order_number) VALUES ('Hot Air Balloon', 'Predeal', 3,  '2022/01/10', '2022/12/10', 777.45, 'F3333' );
+INSERT INTO Travel(type_travel, place_travel, city_id, start_date, end_date, amount, order_number) VALUES ('Hot Air Balloon', 'Predeal', 3,  '2022/01/01', '2023/01/01', 777.45, 'F3333' );
 
 SELECT * FROM Travel;
 
 
+-----------------------------------------------------------------------
+DROP TABLE IF EXISTS City;
+DROP TABLE  IF EXISTS District;
+DROP TABLE IF EXISTS Country;
+DROP TABLE IF EXISTS Travel;
 
-
-
-
-
-
-
-
+----------------------------------------------------------------------
 
 CREATE TABLE Country(
     id int8 PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     "name" varchar(32)
-)
+);
+
+CREATE TABLE District(
+    id int8 PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    "name" varchar(32),
+    country_id int8 REFERENCES Country(id)
+);
+
+
+CREATE TABLE City(
+    id int8 PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+    "name" varchar(32),
+    district_id int8 REFERENCES District(id),
+    country_id int8 REFERENCES Country(id)
+);
+
+-------------------------------------------------------------------------------
 
 INSERT INTO Country (name) Values ('Romania');
 INSERT INTO Country ("name") VALUES ('Moldova');
 
 SELECT * FROM Country;
 
-
-
-CREATE TABLE District(
-    id int8 PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    "name" varchar(32),
-    country_id int8 references Country(id)
-);
+----------------------------------------------------------------------------------
 
 INSERT INTO District (name, country_id) VALUES ('Prahova', 1);
 INSERT INTO District ("name", country_id) VALUES('Bucharest', 1);
-INSERT INTO district ("name", country_id) VALUES ('Dubasari', 2);
-INSERT INTO district ("name", country_id) VALUES ('Criuleni', 2);
-INSERT INTO district ("name", country_id) VALUES ('Chisinau', 2);
+INSERT INTO District ("name", country_id) VALUES ('Dubasari', 2);
+INSERT INTO District ("name", country_id) VALUES ('Criuleni', 2);
+INSERT INTO District ("name", country_id) VALUES ('Chisinau', 2);
 
-SELECT * FROM district;
+SELECT * FROM District;
 
+----------------------------------------------------------------------------------
 
-
-CREATE TABLE City(
-    id int8 PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    "name" varchar(32),
-    district_id int8 references District(id)
-);
-
-INSERT INTO city("name", district_id) VALUES ('Ploiest', 1);
-INSERT INTO city("name", district_id) VALUES ('Busteni', 1);
-INSERT INTO city("name", district_id) VALUES ('Predeal', 1);
-INSERT INTO city("name", district_id) VALUES ('Bucharest', 2);
-INSERT INTO city("name", district_id) VALUES ('Ilfov', 2);
-INSERT INTO city("name", district_id) VALUES ('Cocieri', 3);
-INSERT INTO city("name", district_id) VALUES ('Corjova', 3);
-INSERT INTO city("name", district_id) VALUES ('Onitcani', 4);
-INSERT INTO city("name", district_id) VALUES ('Cosernita', 4);
+INSERT INTO city("name", district_id, country_id) VALUES ('Ploiest', 1, 1);
+INSERT INTO city("name", district_id, country_id) VALUES ('Busteni', 1, 1);
+INSERT INTO city("name", district_id, country_id) VALUES ('Predeal', 1, 1);
+INSERT INTO city("name", district_id, country_id) VALUES ('Bucharest', 2, 1);
+INSERT INTO city("name", district_id, country_id) VALUES ('Ilfov', 2, 1);
+INSERT INTO city("name", district_id, country_id) VALUES ('Cocieri', 3, 2);
+INSERT INTO city("name", district_id, country_id) VALUES ('Corjova', 3, 2);
+INSERT INTO city("name", district_id, country_id) VALUES ('Onitcani', 4, 2);
+INSERT INTO city("name", district_id, country_id) VALUES ('Cosernita', 4, 2);
 
 SELECT * FROM City;
 
 
 
-CREATE TABLE Travel_City(
-            travel_id int8 REFERENCES Travel(id),
-            city_id int8 REFERENCES City(id),
-            PRIMARY KEY(travel_id, city_id)
-);
 
-SELECT * FROM travel_city;
 
-INSERT INTO travel_city(travel_id, city_id) values (1,1);
-INSERT INTO travel_city(travel_id, city_id) values (1,2);
-INSERT INTO travel_city(travel_id, city_id) values (1,3);
-INSERT INTO travel_city(travel_id, city_id) values (7,1);
-INSERT INTO travel_city(travel_id, city_id) values (7,2);
-INSERT INTO travel_city(travel_id, city_id) values (7,3);
-INSERT INTO travel_city(travel_id, city_id) values (3,4);]]></console>
+
+
+--
+--
+--SELECT cit.id, 'cities', cont.name, st.name, cit.name 
+--FROM countries cont 
+--INNER JOIN states st ON  cont.id = st.country_id 
+--INNER JOIN  join cities cit ON st.id = cit.state_id
+--
+--  UNION ALL
+--
+--SELECT stat.id, 'states', cont.name, st.name, '' 
+--FROM  countries cont 
+--INNER JOIN states st ON cont.id = st.country_id
+--
+--  UNION ALL
+--
+--SELECT cont.id, 'countries', cont.name, '', '' FROM countries cont 
+
+
+
+--
+--select
+--    c.id,
+--    'countries' as table_name,
+--    c.name as country,
+--    '' as state,
+--    '' as city
+--from countries c
+--union
+--select
+--    s.id,
+--    'states' as table_name,
+--    c.name as country,
+--    s.name as state,
+--    '' as city
+--from countries c
+--JOIN states s ON c.id = s.country_id
+--union
+--select
+--    ci.id,
+--    'cities' as table_name,
+--    c.name as country,
+--    s.name as state,
+--    ci.name as city
+--from countries c
+--JOIN states s ON c.id = s.country_id
+--JOIN cities ci ON s.id = ci.state_id
+--order by country, state, city]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
