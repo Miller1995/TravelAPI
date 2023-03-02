@@ -11,12 +11,10 @@ import java.util.List;
 @Repository
 public interface TravelRepository extends JpaRepository<Travel,Long>{
 
-    // custom query for find all Travels with typeTravel=? and startDate=>? and endDate<=?
     List<Travel> findAllByTypeTravelAndStartDateGreaterThanEqualAndEndDateLessThanEqual(String typeTravel,
                                                                                         LocalDate startDate,
                                                                                         LocalDate endDate);
 
     List<Travel> findAllByTypeTravel(String typeTravel);
-
 }
 

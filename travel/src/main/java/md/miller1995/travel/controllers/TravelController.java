@@ -40,20 +40,16 @@ public class TravelController {
         return travel.convertTravelToTravelDTO();
     }
 
-    // this method find all Travels after nameField (typeTravel, amount, orderNumber, id, startDate and endDate) in ASC order
     @GetMapping("/search/{nameField}")
     public List<Travel> getAllTravelsWithSortBy(@PathVariable("nameField") String nameField){
         return travelService.findTravelsWithSorting(nameField);
     }
 
-
-    // find Travel by type
     @GetMapping("/search/by")
     public List<Travel> findAllTravelsByTypeTravel(@RequestParam(value = "typeTravel") String typeTravel){
         return travelService.findAllTravelByTypeTravel(typeTravel) ;
     }
 
-    // find Travel after period and field typeTravel
     @GetMapping("/search")
     public List<Travel> getAllTravelsBetweenDateAndSortByTypeTravel(
             @RequestParam(value = "typeTravel") String typeTravel,
@@ -63,8 +59,6 @@ public class TravelController {
         return travelService.findAllTravelsWithSortByTypeTravelAndBetweenDate(typeTravel, startDate, endDate);
     }
 
-
-    // adding new Travel in database
     @PostMapping("/add")
     public ResponseEntity<HttpStatus> registerTravel(@RequestBody @Valid TravelDTO travelDTO,
                                                      BindingResult bindingResult){
@@ -88,7 +82,6 @@ public class TravelController {
         return ResponseEntity.ok(HttpStatus.CREATED);
     }
 
-    // delete Travel by id
     @DeleteMapping("/{id}")
     public ResponseEntity<HttpStatus> deleteTravel(@PathVariable("id") Long id){
         travelService.deleteTravel(id);
@@ -96,7 +89,6 @@ public class TravelController {
         return ResponseEntity.ok(HttpStatus.NO_CONTENT);
     }
 
-    // update Travel
     @PatchMapping("/{id}")
     public ResponseEntity<HttpStatus> updateTravel(@RequestBody TravelDTO travelDTO,
                                                    @PathVariable("id") Long id){
@@ -124,6 +116,4 @@ public class TravelController {
         );
         return new ResponseEntity<>(response,HttpStatus.NOT_ACCEPTABLE);
     }
-
-
 }

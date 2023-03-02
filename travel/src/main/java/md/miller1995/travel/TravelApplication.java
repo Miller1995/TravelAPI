@@ -12,7 +12,6 @@ public class TravelApplication {
 		SpringApplication.run(TravelApplication.class, args);
 	}
 
-
 	@Bean
 	public ModelMapper modelMapper(){
 		return new ModelMapper();
