@@ -64,7 +64,6 @@ public class TravelService {
         Optional<Travel> travelResult = travelRepository.findById(id);
 
             Travel travelToBeUpdated = travelResult.get();
-
             travelToBeUpdated.setTypeTravel(updateTravel.getTypeTravel());
             travelToBeUpdated.setPlaceTravel(updateTravel.getPlaceTravel());
             travelToBeUpdated.setStartDate(updateTravel.getStartDate());
@@ -72,6 +71,4 @@ public class TravelService {
             travelToBeUpdated.setAmount(updateTravel.getAmount());
             travelToBeUpdated.setOrderNumber(updateTravel.getOrderNumber());
     }
-
-
 }

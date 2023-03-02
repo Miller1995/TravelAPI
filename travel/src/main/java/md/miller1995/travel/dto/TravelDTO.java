@@ -22,8 +22,6 @@ public class TravelDTO{
     @NotBlank (message = "Place travel can't be empty")
     private String placeTravel;
 
-    private Long cityID;
-
     @NotNull(message = "Start date can't be null and format should be yyyy-MM-dd")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate startDate;

@@ -1,6 +1,5 @@
 package md.miller1995.travel.models;
 
-
 import lombok.*;
 import md.miller1995.travel.dto.TravelDTO;
 import org.modelmapper.ModelMapper;
